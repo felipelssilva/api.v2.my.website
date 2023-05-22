@@ -1,0 +1,38 @@
+input CreateProjectInput {
+  name: String!
+  description: String!
+  url: String!
+  createdAt: String!
+  deletedAt: String
+  updatedAt: String
+}
+
+input UpdateProjectInput {
+  name: String
+  description: String
+  url: String
+  createdAt: String
+  deletedAt: String
+  updatedAt: String!
+}
+
+type Project {
+  _id: String!
+  name: String!
+  description: String!
+  url: String!
+  createdAt: String!
+  deletedAt: String
+  updatedAt: String
+}
+
+type Query {
+  projects: [Project!]
+  project(_id: String!): Project
+}
+
+type Mutation {
+  createProject(input: CreateProjectInput!): Project
+  updateProject(_id: String!, input: UpdateProjectInput!): Boolean
+  deleteProject(_id: String!): Boolean
+}
