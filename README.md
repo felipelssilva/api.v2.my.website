@@ -62,11 +62,19 @@ $ yarn run test:cov
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+## Docker
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Test the container locally
+
+```
+docker build -t api-my-website .
+```
+
+Start the container and run the image with this command
+
+```
+docker run -p80:3000 api-my-website
+```
 
 ## License
 
