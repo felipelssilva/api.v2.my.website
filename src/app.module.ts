@@ -50,7 +50,6 @@ const directiveResolvers = {
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      typePaths: ['./**/*.graphql'],
       directiveResolvers,
       context: async ({ req, res, connection }) => {
         if (connection) {
@@ -79,10 +78,6 @@ const directiveResolvers = {
       formatError: (err) => {
         console.log(err);
         return err;
-      },
-      definitions: {
-        path: join(process.cwd(), 'src/graphql.ts'),
-        outputAs: 'class',
       },
     }),
     TypeOrmModule.forRootAsync({
