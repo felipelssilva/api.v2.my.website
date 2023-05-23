@@ -55,7 +55,6 @@ const directiveResolvers = {
     GraduationModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      typePaths: ['./**/*.graphql'],
       directiveResolvers,
       context: async ({ req, res, connection }) => {
         if (connection) {
