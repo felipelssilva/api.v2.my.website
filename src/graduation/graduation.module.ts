@@ -7,5 +7,6 @@ import { GraduationService } from './graduation.service';
 @Module({
   imports: [TypeOrmModule.forFeature([Graduation])],
   providers: [GraduationResolver, GraduationService],
+  exports: [GraduationService],
 })
 export class GraduationModule {}

@@ -142,6 +142,8 @@ export abstract class IQuery {
 
     abstract project(_id: string): Nullable<Project> | Promise<Nullable<Project>>;
 
+    abstract hello(): string | Promise<string>;
+
     abstract me(): Nullable<User> | Promise<Nullable<User>>;
 
     abstract users(offset: number, limit: number): Nullable<User[]> | Promise<Nullable<User[]>>;
@@ -174,7 +176,7 @@ export abstract class IMutation {
 
     abstract deleteProject(_id: string): Nullable<boolean> | Promise<Nullable<boolean>>;
 
-    abstract register(input: CreateUserInput): Nullable<User> | Promise<Nullable<User>>;
+    abstract createUser(input: CreateUserInput): Nullable<User> | Promise<Nullable<User>>;
 
     abstract updateUser(_id: string, input: UpdateUserInput): Nullable<boolean> | Promise<Nullable<boolean>>;
 

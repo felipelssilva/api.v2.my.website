@@ -6,7 +6,6 @@ import {
   Subscription,
   Context,
 } from '@nestjs/graphql';
-
 import { UserService } from './user.service';
 import { LoginResponse, User } from './entities/user.entity';
 import { CreateUserInput, LoginUserInput, UpdateUserInput } from '../graphql';
@@ -14,6 +13,11 @@ import { CreateUserInput, LoginUserInput, UpdateUserInput } from '../graphql';
 @Resolver('user')
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
+
+  @Query(() => String)
+  async hello() {
+    return await 'world';
+  }
 
   @Query(() => [User])
   async users(@Args('offset') offset: number, @Args('limit') limit: number) {
@@ -30,14 +34,9 @@ export class UserResolver {
     return await this.userService.findById(_id);
   }
 
-  @Mutation(() => User, { name: 'register' })
-  async createUser(
-    @Args('input') input: CreateUserInput,
-    @Context('pubSub') pubSub,
-  ) {
-    const createdUser = await this.userService.create(input);
-    pubSub.publish('userCreated', { userCreated: createdUser });
-    return createdUser;
+  @Mutation(() => [User])
+  async createUser(@Args('input') input: CreateUserInput) {
+    return await this.userService.create(input);
   }
 
   @Mutation(() => User)
@@ -66,7 +65,7 @@ export class UserResolver {
     return await this.userService.setRole(_id, role);
   }
 
-  @Subscription()
+  @Subscription(() => User)
   userCreated(@Context('pubSub') pubSub: any) {
     return pubSub.asyncIterator('userCreated');
   }
