@@ -1,7 +1,7 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { ContactService } from './contact.service';
 import { Contact } from './entities/contact.entity';
-import { CreateContactInput, UpdateContactInput } from 'src/graphql';
+import { CreateContactInput, UpdateContactInput } from '../graphql';
 
 @Resolver('contact')
 export class ContactResolver {

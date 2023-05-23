@@ -9,7 +9,7 @@ import {
 
 import { UserService } from './user.service';
 import { LoginResponse, User } from './entities/user.entity';
-import { CreateUserInput, LoginUserInput, UpdateUserInput } from 'src/graphql';
+import { CreateUserInput, LoginUserInput, UpdateUserInput } from '../graphql';
 
 @Resolver('user')
 export class UserResolver {

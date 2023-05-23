@@ -3,7 +3,7 @@ import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 
 import { ProjectService } from './project.service';
 import { Project } from './entities/project.entity';
-import { CreateProjectInput, UpdateProjectInput } from 'src/graphql';
+import { CreateProjectInput, UpdateProjectInput } from '../graphql';
 
 @Resolver('projects')
 export class ProjectResolver {

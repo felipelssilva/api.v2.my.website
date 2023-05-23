@@ -3,7 +3,7 @@ import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 
 import { GraduationService } from './graduation.service';
 import { Graduation } from './entities/graduation.entity';
-import { CreateGraduationInput, UpdateGraduationInput } from 'src/graphql';
+import { CreateGraduationInput, UpdateGraduationInput } from '../graphql';
 
 @Resolver('graduation')
 export class GraduationResolver {

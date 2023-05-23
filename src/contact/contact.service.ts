@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MongoRepository } from 'typeorm';
 import { Contact } from './entities/contact.entity';
-import { CreateContactInput, UpdateContactInput } from 'src/graphql';
+import { CreateContactInput, UpdateContactInput } from '../graphql';
 
 @Injectable()
 export class ContactService {

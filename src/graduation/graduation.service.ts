@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MongoRepository } from 'typeorm';
 import { Graduation } from './entities/graduation.entity';
-import { CreateGraduationInput, UpdateGraduationInput } from 'src/graphql';
+import { CreateGraduationInput, UpdateGraduationInput } from '../graphql';
 
 @Injectable()
 export class GraduationService {

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MongoRepository } from 'typeorm';
 import { Project } from './entities/project.entity';
-import { CreateProjectInput, UpdateProjectInput } from 'src/graphql';
+import { CreateProjectInput, UpdateProjectInput } from '../graphql';
 
 @Injectable()
 export class ProjectService {

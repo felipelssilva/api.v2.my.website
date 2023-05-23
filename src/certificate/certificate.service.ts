@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MongoRepository } from 'typeorm';
 import { Certificate } from './entities/certificate.entity';
-import { CreateCertificateInput, UpdateCertificateInput } from 'src/graphql';
+import { CreateCertificateInput, UpdateCertificateInput } from '../graphql';
 
 @Injectable()
 export class CertificateService {

@@ -3,7 +3,7 @@ import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 
 import { CertificateService } from './certificate.service';
 import { Certificate } from './entities/certificate.entity';
-import { CreateCertificateInput, UpdateCertificateInput } from 'src/graphql';
+import { CreateCertificateInput, UpdateCertificateInput } from '../graphql';
 
 @Resolver('certificate')
 export class CertificateResolver {

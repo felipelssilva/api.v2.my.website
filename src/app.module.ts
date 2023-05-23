@@ -9,7 +9,6 @@ import { ConfigModule } from '@nestjs/config';
 import { configuration } from './config';
 import { TypeormService } from './config/typeorm/typeorm.service';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { join } from 'path';
 import { TypeormModule } from './config/typeorm/typeorm.module';
 import { GraduationModule } from './graduation/graduation.module';
 import { UseFilters } from '@nestjs/common';
@@ -48,6 +47,12 @@ const directiveResolvers = {
 @UseFilters(new HttpExceptionFilter())
 @Module({
   imports: [
+    TypeormModule,
+    UserModule,
+    ContactModule,
+    ProjectModule,
+    CertificateModule,
+    GraduationModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       directiveResolvers,
@@ -87,12 +92,6 @@ const directiveResolvers = {
       load: [configuration],
       isGlobal: true,
     }),
-    TypeormModule,
-    UserModule,
-    ContactModule,
-    ProjectModule,
-    CertificateModule,
-    GraduationModule,
   ],
 })
 export class AppModule {}
