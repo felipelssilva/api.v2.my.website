@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,4 +5,74 @@ generator client {
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
+}
+
+model abouts {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  description String
+  updated_at  DateTime @db.Date
+}
+
+model blogs {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  v             Int?      @map("__v")
+  content       String
+  created_at    DateTime  @db.Date
+  deleted_at    DateTime? @db.Date
+  permalink     String
+  short_content String
+  title         String
+  updated_at    DateTime? @db.Date
+}
+
+model certificate {
+  id          String   @id @map("_id")
+  createdAt   DateTime @db.Date
+  description String
+  img         String
+  name        String
+  order       String
+  updatedAt   DateTime @db.Date
+  url         String
+}
+
+model contact {
+  id        String   @id @map("_id")
+  createdAt DateTime @db.Date
+  email     String
+  message   String
+  name      String
+  subject   String
+  updatedAt DateTime @db.Date
+}
+
+model graduation {
+  id          String   @id @map("_id")
+  createdAt   DateTime @db.Date
+  description String
+  img         String
+  name        String
+  title       String
+  updatedAt   DateTime @db.Date
+}
+
+model project {
+  id          String   @id @map("_id")
+  createdAt   DateTime @db.Date
+  description String
+  name        String
+  updatedAt   DateTime @db.Date
+  url         String
+}
+
+model user {
+  id        String   @id @map("_id")
+  createdAt DateTime @db.Date
+  email     String   @unique(map: "IDX_e12875dfb3b1d92d7d7c5377e2")
+  name      String
+  password  String
+  role      String
+  status    Boolean
+  updatedAt DateTime @db.Date
+  username  String
 }
