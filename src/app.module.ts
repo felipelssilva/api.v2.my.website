@@ -13,6 +13,8 @@ import { TypeormModule } from './config/typeorm/typeorm.module';
 import { GraduationModule } from './graduation/graduation.module';
 import { UseFilters } from '@nestjs/common';
 import { HttpExceptionFilter } from './http-exception.filter';
+import { upperDirectiveTransformer } from './common/directives/upper-case.directive';
+
 // import { GraphqlService } from './config/graphql/graphql.service';
 // import { PubSub } from 'graphql-subscriptions';
 
@@ -54,11 +56,11 @@ import { HttpExceptionFilter } from './http-exception.filter';
     ProjectModule,
     CertificateModule,
     GraduationModule,
-    GraphQLModule.forRootAsync<ApolloDriverConfig>({
+    GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      useFactory: () => ({
-        typePaths: ['./**/*.graphql'],
-      }),
+      typePaths: ['./**/*.graphql'],
+      transformSchema: (schema) => upperDirectiveTransformer(schema, 'upper'),
+      installSubscriptionHandlers: true,
     }),
     TypeOrmModule.forRootAsync({
       useClass: TypeormService,
