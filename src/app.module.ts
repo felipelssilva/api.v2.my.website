@@ -13,6 +13,7 @@ import { TypeormModule } from './config/typeorm/typeorm.module';
 import { GraduationModule } from './graduation/graduation.module';
 import { UseFilters } from '@nestjs/common';
 import { HttpExceptionFilter } from './http-exception.filter';
+// import { GraphqlService } from './config/graphql/graphql.service';
 // import { PubSub } from 'graphql-subscriptions';
 
 // const pubSub = new PubSub();
