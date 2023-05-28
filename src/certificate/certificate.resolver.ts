@@ -6,12 +6,12 @@ import { Certificate } from './entities/certificate.entity';
 import { Inject } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 
-@Resolver('certificate')
+@Resolver(Certificate)
 export class CertificateResolver {
   // constructor(private readonly certificateService: CertificateService) {}
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
-  @Query((returns) => [Certificate], { nullable: true })
+  @Query((returns) => [Certificate])
   async projects(@Context() ctx) {
     return this.prismaService.certificate.findMany();
   }

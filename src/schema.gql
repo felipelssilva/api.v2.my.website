@@ -19,7 +19,52 @@ type User {
 """
 scalar Timestamp
 
+type Certificate {
+  id: String!
+  name: String!
+  description: String!
+  url: String!
+  order: String!
+  img: String!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  deletedAt: Timestamp
+}
+
+type Contact {
+  id: String!
+  name: String!
+  email: String!
+  subject: String!
+  message: String!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  deletedAt: Timestamp
+}
+
+type Graduation {
+  id: String!
+  name: String!
+  title: String!
+  description: String!
+  img: String!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  deletedAt: Timestamp
+}
+
+type Project {
+  id: String!
+  name: String!
+  description: String!
+  url: String!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  deletedAt: Timestamp
+}
+
 type Query {
   hello: String!
   users: [User!]
+  projects: [Project!]!
 }

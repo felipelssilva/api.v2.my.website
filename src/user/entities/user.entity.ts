@@ -113,25 +113,25 @@ export class User {
   @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date;
 
-  // @BeforeInsert()
-  // async b4register() {
-  //   this._id = await uuid.v1();
-  //   this.role = await 'MEMBER';
-  //   this.status = await true;
-  //   this.password = await bcrypt.hash(this.password, 10);
-  // }
+  @BeforeInsert()
+  async b4register() {
+    this.id = await uuid.v1();
+    this.role = await 'MEMBER';
+    this.status = await true;
+    this.password = await bcrypt.hash(this.password, 10);
+  }
 
-  // @BeforeRemove()
-  // async b4block() {
-  //   this.status = false;
-  // }
+  @BeforeRemove()
+  async b4block() {
+    this.status = false;
+  }
 
-  // @BeforeUpdate()
-  // async b4update() {
-  //   this.password = await bcrypt.hash(this.password, 10);
-  // }
+  @BeforeUpdate()
+  async b4update() {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
 
-  // async matchesPassword(password) {
-  //   return await bcrypt.compare(password, this.password);
-  // }
+  async matchesPassword(password) {
+    return await bcrypt.compare(password, this.password);
+  }
 }

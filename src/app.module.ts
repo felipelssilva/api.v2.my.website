@@ -8,6 +8,10 @@ import { HttpExceptionFilter } from './http-exception.filter';
 import { join } from 'path';
 import { PrismaService } from './prisma.service';
 import { UserResolver } from './user/user.resolver';
+import { CertificateResolver } from './certificate/certificate.resolver';
+import { ContactResolver } from './contact/contact.resolver';
+import { GraduationResolver } from './graduation/graduation.resolver';
+import { ProjectResolver } from './project/project.resolver';
 const schema =
   process.env.NODE_ENV === 'development'
     ? join(process.cwd(), 'src/schema.gql')
@@ -26,6 +30,13 @@ const schema =
       isGlobal: true,
     }),
   ],
-  providers: [PrismaService, UserResolver],
+  providers: [
+    PrismaService,
+    UserResolver,
+    CertificateResolver,
+    ContactResolver,
+    GraduationResolver,
+    ProjectResolver,
+  ],
 })
 export class AppModule {}

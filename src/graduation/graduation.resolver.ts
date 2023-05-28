@@ -6,12 +6,12 @@ import { Graduation } from './entities/graduation.entity';
 import { PrismaService } from 'src/prisma.service';
 import { Inject } from '@nestjs/common';
 
-@Resolver('graduation')
+@Resolver(Graduation)
 export class GraduationResolver {
   // constructor(private readonly graduationService: GraduationService) {}
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
-  @Query((returns) => [Graduation], { nullable: true })
+  @Query((returns) => [Graduation])
   async projects(@Context() ctx) {
     return this.prismaService.graduation.findMany();
   }

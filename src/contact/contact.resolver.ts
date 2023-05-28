@@ -4,12 +4,12 @@ import { Contact } from './entities/contact.entity';
 import { PrismaService } from 'src/prisma.service';
 import { Inject } from '@nestjs/common';
 
-@Resolver('contact')
+@Resolver(Contact)
 export class ContactResolver {
   // constructor(private readonly contactService: ContactService) {}
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
-  @Query((returns) => [Contact], { nullable: true })
+  @Query((returns) => [Contact])
   async projects(@Context() ctx) {
     return this.prismaService.contact.findMany();
   }
