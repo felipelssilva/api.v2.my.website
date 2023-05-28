@@ -10,7 +10,7 @@ export class ProjectResolver {
   // constructor(private readonly projectService: ProjectService) {}
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
-  @Query((returns) => [Project])
+  @Query((returns) => [Project], { nullable: true })
   async projects(@Context() ctx) {
     return this.prismaService.project.findMany();
   }

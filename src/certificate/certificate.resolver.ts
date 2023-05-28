@@ -11,8 +11,8 @@ export class CertificateResolver {
   // constructor(private readonly certificateService: CertificateService) {}
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
-  @Query((returns) => [Certificate])
-  async projects(@Context() ctx) {
+  @Query((returns) => [Certificate], { nullable: true })
+  async certificates(@Context() ctx) {
     return this.prismaService.certificate.findMany();
   }
   // @Query(() => [Certificate])

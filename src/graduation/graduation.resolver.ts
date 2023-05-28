@@ -11,8 +11,8 @@ export class GraduationResolver {
   // constructor(private readonly graduationService: GraduationService) {}
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
-  @Query((returns) => [Graduation])
-  async projects(@Context() ctx) {
+  @Query((returns) => [Graduation], { nullable: true })
+  async graduations(@Context() ctx) {
     return this.prismaService.graduation.findMany();
   }
   // @Query(() => [Graduation])

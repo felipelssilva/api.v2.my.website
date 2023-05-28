@@ -9,8 +9,8 @@ export class ContactResolver {
   // constructor(private readonly contactService: ContactService) {}
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
-  @Query((returns) => [Contact])
-  async projects(@Context() ctx) {
+  @Query((returns) => [Contact], { nullable: true })
+  async contacts(@Context() ctx) {
     return this.prismaService.contact.findMany();
   }
   // @Query(() => [Contact])

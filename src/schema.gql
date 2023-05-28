@@ -64,7 +64,9 @@ type Project {
 }
 
 type Query {
-  hello: String!
   users: [User!]
-  projects: [Project!]!
+  certificates: [Certificate!]
+  contacts: [Contact!]
+  graduations: [Graduation!]
+  projects: [Project!]
 }

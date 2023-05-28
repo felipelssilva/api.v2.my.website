@@ -9,11 +9,6 @@ export class UserResolver {
   // constructor(private readonly userService: UserService) {}
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
-  @Query(() => String)
-  async hello() {
-    return await 'world';
-  }
-
   // @Query(() => [User])
   // async users(@Args('offset') offset: number, @Args('limit') limit: number) {
   //   return await this.userService.findAll(offset, limit);
