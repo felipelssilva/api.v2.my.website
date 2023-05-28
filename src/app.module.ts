@@ -5,7 +5,6 @@ import { configuration } from './config';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { UseFilters } from '@nestjs/common';
 import { HttpExceptionFilter } from './http-exception.filter';
-import { join } from 'path';
 import { PrismaService } from './prisma.service';
 import { UserResolver } from './user/user.resolver';
 
@@ -14,7 +13,7 @@ import { UserResolver } from './user/user.resolver';
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      autoSchemaFile: 'src/schema.gql',
       buildSchemaOptions: { dateScalarMode: 'timestamp' },
     }),
     ConfigModule.forRoot({
