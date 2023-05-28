@@ -1,39 +1,45 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // import { Controller } from '@nestjs/common';
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { Resolver, Query, Context } from '@nestjs/graphql';
 
-import { GraduationService } from './graduation.service';
 import { Graduation } from './entities/graduation.entity';
-import { CreateGraduationInput, UpdateGraduationInput } from '../graphql';
+import { PrismaService } from 'src/prisma.service';
+import { Inject } from '@nestjs/common';
 
 @Resolver('graduation')
 export class GraduationResolver {
-  constructor(private readonly graduationService: GraduationService) {}
+  // constructor(private readonly graduationService: GraduationService) {}
+  constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
-  @Query(() => [Graduation])
-  async graduations() {
-    return await this.graduationService.findAll();
+  @Query((returns) => [Graduation], { nullable: true })
+  async projects(@Context() ctx) {
+    return this.prismaService.graduation.findMany();
   }
+  // @Query(() => [Graduation])
+  // async graduations() {
+  //   return await this.graduationService.findAll();
+  // }
 
-  @Query(() => Graduation)
-  async graduation(@Args('_id') _id: string) {
-    return await this.graduationService.findById(_id);
-  }
+  // @Query(() => Graduation)
+  // async graduation(@Args('_id') _id: string) {
+  //   return await this.graduationService.findById(_id);
+  // }
 
-  @Mutation(() => Graduation)
-  async createGraduation(@Args('input') input: CreateGraduationInput) {
-    return await this.graduationService.create(input);
-  }
+  // @Mutation(() => Graduation)
+  // async createGraduation(@Args('input') input: CreateGraduationInput) {
+  //   return await this.graduationService.create(input);
+  // }
 
-  @Mutation(() => Graduation)
-  async updateGraduation(
-    @Args('_id') _id: string,
-    @Args('input') input: UpdateGraduationInput,
-  ) {
-    return await this.graduationService.update(_id, input);
-  }
+  // @Mutation(() => Graduation)
+  // async updateGraduation(
+  //   @Args('_id') _id: string,
+  //   @Args('input') input: UpdateGraduationInput,
+  // ) {
+  //   return await this.graduationService.update(_id, input);
+  // }
 
-  @Mutation(() => Boolean)
-  async deleteGraduation(@Args('_id') _id: string) {
-    return await this.graduationService.delete(_id);
-  }
+  // @Mutation(() => Boolean)
+  // async deleteGraduation(@Args('_id') _id: string) {
+  //   return await this.graduationService.delete(_id);
+  // }
 }
