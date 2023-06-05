@@ -4,17 +4,24 @@ repo:
 
 # Add 'test' label to any change to *.spec.js files within the source dir
 test:
-  - src/**/*.spec.js
+  - src/**/*.spec.ts
 
-# Add 'source' label to any change to src files within the source dir EXCEPT for the docs sub-folder
+# Add 'source' label to any change to src files within the source dir
 source:
   - any: ['src/**']
 
-# Add 'frontend` label to any change to *.js files as long as the `main.ts` hasn't changed
+# Add 'frontend` label to any change to *.js files
 frontend:
   - any: ['src/**/*.ts']
-    all: ['!src/main.ts']
 
 # Add 'graphql` label to any change to *.gql files
 graphql:
   - any: ['src/**/*.gql']
+
+# Add 'database` label to any change to *.prisma files
+database:
+  - any: ['src/**/*.prisma']
+
+# Add 'doc` label to any change to *.md files
+doc:
+  - any: ['**/*.md']
